@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -13,6 +14,7 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
 #center {
 	text-align: center;
@@ -22,8 +24,8 @@ width : 100%;
 
 }
 .nav-item {
-font-weight: 900;
-font-size: 1.3em;
+font-weight: 600;
+font-size: 1.2em;
 padding : 3px;
 color: aqua;
 }
@@ -31,7 +33,13 @@ color: aqua;
 #half {
 	width: 45%;
 }
+nav {
+    box-shadow: 0px 0px 3px 3px #EDEEED;
+}
 
+#shade {
+  box-shadow: 0px 0px 3px 3px #EDEEED;
+}
 </style>
 <body>
 	<nav class="navbar navbar-expand-lg bg-light navbar-light">
@@ -40,29 +48,26 @@ color: aqua;
 			  style="margin-right: 20%;"></a>
 
 		<!-- Links -->
-		<ul class="navbar-nav  justify-content-end" >
-		
+		<ul class="navbar-nav   justify-content-end" >
+
 		<%
-		String memberid = (String) session.getAttribute("memberId");
-		if(memberid==null) {
-			%>
-			<li class="nav-item"><a class="nav-link"
+		String memid = (String) session.getAttribute("memberId");
+		if (memid==null) {  // login 않됬음
+		%>
+				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath() %>/view/member/memberInput.jsp">회원가입</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath() %>/view/member/loginForm.jsp">로그인</a></li>
-		<% }else{
-			%> <li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath() %>/view/member/memberUpdate.jsp"><%=memberid %>:회원정보수정</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath() %>/view/member/logOut.jsp">로그아웃</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath() %>/view/member/deleteForm.jsp">회원탈퇴</a></li>	
-		<%} %>
-		
-		
-		
 			
-			
+		<% } else { 	//login ok
+			%>	<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath() %>/view/member/memberUpdate.jsp"><%=memid %>:회원정보수정</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath() %>/view/member/logout.jsp">로그아웃</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath() %>/view/member/deleteForm.jsp">회원탈퇴</a></li>
+
+		<% } %>	
 			<li class="nav-item"><a
 				href="<%=request.getContextPath() %>/board/list?boardid=1"
 				class="nav-link">공지사항</a></li>

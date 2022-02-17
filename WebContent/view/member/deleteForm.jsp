@@ -17,6 +17,7 @@ alert("로그인이 필요합니다.")
 location.href = "<%=request.getContextPath() %>/view/member/loginForm.jsp";
 </script>	
 <%} else { %>
+<hr>
 <div class="container">
 		<h2   id="center">회원탈퇴</h2>
 		<form action="<%=request.getContextPath()%>/view/member/deletePro.jsp" method="post">

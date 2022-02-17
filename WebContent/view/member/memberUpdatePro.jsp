@@ -1,3 +1,4 @@
+
 <%@page import="model.Member"%>
 <%@page import="service.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,11 +27,15 @@ location.href="<%=request.getContextPath()%>/view/member/loginForm.jsp";
 String tel = request.getParameter("tel");
 String email = request.getParameter("email");
 String pass = request.getParameter("pass");
+String picture = request.getParameter("picture");
 MemberDao md = new MemberDao();
 Member mem = md.selectOne(login);
 //member에 email, tel 을 저장
 mem.setEmail(email);
 mem.setTel(tel);
+mem.setPicture(picture);
+
+System.out.println(mem);
 
 
 
